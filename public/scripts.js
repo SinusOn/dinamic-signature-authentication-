@@ -14,13 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
     drawing = true;
     ctx.beginPath();
     x = e.pageX - canvas.offsetLeft;
+    // коорд х курсора относительно всего документа - левое смещение канваса от родителя
     y = e.pageY - canvas.offsetTop;
     ctx.moveTo(x, y);
     if (arrXY.length == 0) {
-      diffX = x;
+      diffX = x; //смещение по х от угла канваса
       diffY = y;
       x = 0;
       y = 0;
+      startDrawing = false;
       arrXY.push(`x: ${x}, y: ${y};`);
     } else {
       x = e.pageX - canvas.offsetLeft - diffX;
